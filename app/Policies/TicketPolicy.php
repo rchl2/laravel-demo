@@ -8,7 +8,6 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Tickets;
-use App\Queries\TicketsQueries;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TicketPolicy
@@ -28,6 +27,6 @@ class TicketPolicy
      */
     public function answer(User $user, Tickets $ticket): bool
     {
-        return ! $ticket->isClosed($ticket) AND $ticket->isAuthoredBy($user) OR $user->isAdmin();
+        return ! $ticket->isClosed($ticket) and $ticket->isAuthoredBy($user) or $user->isAdmin();
     }
 }

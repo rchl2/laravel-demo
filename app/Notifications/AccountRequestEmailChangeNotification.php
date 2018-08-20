@@ -24,7 +24,6 @@ class AccountRequestEmailChangeNotification extends Notification implements Shou
         return ['mail'];
     }
 
-
     public function toMail(User $user)
     {
         return (new ConfirmEmailChangeMail($this->user))

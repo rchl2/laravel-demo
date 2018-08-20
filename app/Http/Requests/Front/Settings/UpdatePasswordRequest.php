@@ -42,9 +42,9 @@ class UpdatePasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'old_password.required' => trans('pages/account.change_password.validation.old_password_is_required'),
-            'new_password.required' => trans('pages/account.change_password.validation.new_password_required'),
-            'new_password.min' => trans('pages/account.change_password.validation.new_password_min_incorrect'),
+            'old_password.required'  => trans('pages/account.change_password.validation.old_password_is_required'),
+            'new_password.required'  => trans('pages/account.change_password.validation.new_password_required'),
+            'new_password.min'       => trans('pages/account.change_password.validation.new_password_min_incorrect'),
             'new_password.confirmed' => trans('pages/account.change_password.validation.new_password_confirmed_incorrect'),
         ];
     }

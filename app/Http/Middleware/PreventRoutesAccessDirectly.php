@@ -11,8 +11,7 @@ class PreventRoutesAccessDirectly
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->ajax()) 
-        {
+        if (! $request->ajax()) {
             return response()->json(['error' => 'Not authorized'], 403);
         }
 

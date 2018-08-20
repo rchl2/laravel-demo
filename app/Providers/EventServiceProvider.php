@@ -18,7 +18,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AccountWasUnblocked' => [
             'App\Listeners\SendAccountWasUnblockedNotification',
         ],
-        
+
         'App\Events\AccountRequestedEmailChange' => [
             'App\Listeners\SendAccountRequestEmailChangeNotification',
         ],

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Front\Settings;
 
 use Auth;
 use App\Queries\UserQueries;
-use App\Services\AccountService;
 use App\Http\Controllers\Controller;
 use App\Jobs\Front\Settings\UpdateEmail;
 use App\Events\AccountRequestedEmailChange;
@@ -31,8 +30,7 @@ class EmailController extends Controller
     public function requestNewEmail(UpdateEmailRequest $request)
     {
         // Check user password hash
-        if ($this->accountService->checkUserPasswordHash($request->password, Auth::user()->password())) 
-        {
+        if ($this->accountService->checkUserPasswordHash($request->password, Auth::user()->password())) {
             // Update user with token for verification and new email.
             $this->dispatchNow(new SetAccountForEmailChange(Auth::user(), $request->new_email));
 
@@ -52,18 +50,15 @@ class EmailController extends Controller
     public function updateEmail(string $login, string $token)
     {
         $user = UserQueries::findToVerifyEmailChange($login);
-        if ($user)
-        {
+        if ($user) {
             // Compare tokens
             $token = $this->accountService->isNewEmailTokenCorrect($user, $token);
-            
-            if($token)
-            {
+
+            if ($token) {
                 $this->dispatchNow(new UpdateEmail($user, $user->new_email()));
+
                 return redirect()->route('settings')->with('message', trans('pages/account.change_email.user_changed_email'));
-            }
-            else
-            {
+            } else {
                 return redirect()->route('settings')->with('message', trans('pages/account.change_email.incorrect_verification_token'));
             }
         }

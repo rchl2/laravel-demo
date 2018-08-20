@@ -29,10 +29,10 @@ final class UpdateNews
     public function handle(): News
     {
         $this->news->update($this->data);
-        
+
         // Flush cache and return news.
         Cache::forget('home_news');
-        
+
         return $this->news;
     }
 }

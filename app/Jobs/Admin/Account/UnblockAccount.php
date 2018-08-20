@@ -5,7 +5,6 @@ namespace App\Jobs\Admin\Account;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Events\AccountWasUnblocked;
-use App\Services\FailedAttemptService;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Jobs\Admin\FailedAttempts\DeleteFailedAttempt;
 
@@ -27,8 +26,7 @@ final class UnblockAccount
 
     public function handle()
     {
-        if ($this->user->web_ip())
-        {
+        if ($this->user->web_ip()) {
             // Check for failed attempts.
             $failedAttempt = $this->failedAttemptService->checkForFailedAttempts($this->user->web_ip());
 

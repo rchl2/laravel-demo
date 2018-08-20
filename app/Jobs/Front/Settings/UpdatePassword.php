@@ -3,7 +3,6 @@
 namespace App\Jobs\Front\Settings;
 
 use App\Models\User;
-use App\Services\AccountService;
 
 final class UpdatePassword
 {

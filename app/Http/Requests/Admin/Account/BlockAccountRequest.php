@@ -21,10 +21,10 @@ class BlockAccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'duration'  => 'required|numeric|between:1,365',
+            'duration'      => 'required|numeric|between:1,365',
             'duration_type' => 'required|integer|between:1,2',
-            'reason' => 'required|string|max:191|min:3',
-            'ip_ban' => 'nullable',
+            'reason'        => 'required|string|max:191|min:3',
+            'ip_ban'        => 'nullable',
         ];
     }
 
@@ -60,17 +60,17 @@ class BlockAccountRequest extends FormRequest
     {
         return [
             'duration.required' => trans('admin/pages/account.block.validation.duration_is_required'),
-            'duration.numeric' => trans('admin/pages/account.block.validation.duration_numeric_incorrect'),
-            'duration.between' => trans('admin/pages/account.block.validation.duration_between_incorrect'),
+            'duration.numeric'  => trans('admin/pages/account.block.validation.duration_numeric_incorrect'),
+            'duration.between'  => trans('admin/pages/account.block.validation.duration_between_incorrect'),
 
             'duration_type.required' => trans('admin/pages/account.block.validation.duration_type_is_required'),
-            'duration_type.integer' => trans('admin/pages/account.block.validation.duration_type_integer_incorrect'),
-            'duration_type.between' => trans('admin/pages/account.block.validation.duration_type_between_incorrect'),
+            'duration_type.integer'  => trans('admin/pages/account.block.validation.duration_type_integer_incorrect'),
+            'duration_type.between'  => trans('admin/pages/account.block.validation.duration_type_between_incorrect'),
 
             'reason.required' => trans('admin/pages/account.block.validation.reason_is_required'),
-            'reason.string' => trans('admin/pages/account.block.validation.reason_is_incorrect'),
-            'reason.max' => trans('admin/pages/account.block.validation.reason_max_incorrect'),
-            'reason.min' => trans('admin/pages/account.block.validation.reason_min_incorrect'),
+            'reason.string'   => trans('admin/pages/account.block.validation.reason_is_incorrect'),
+            'reason.max'      => trans('admin/pages/account.block.validation.reason_max_incorrect'),
+            'reason.min'      => trans('admin/pages/account.block.validation.reason_min_incorrect'),
         ];
     }
 

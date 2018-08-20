@@ -49,8 +49,8 @@ class CreateNewsRequest extends FormRequest
     {
         return [
             'title.required' => trans('admin/pages/news.create.validation.title_is_required'),
-            'title.min' => trans('admin/pages/news.create.validation.title_min_incorrect'),
-            'title.max' => trans('admin/pages/news.create.validation.title_max_incorrect'),
+            'title.min'      => trans('admin/pages/news.create.validation.title_min_incorrect'),
+            'title.max'      => trans('admin/pages/news.create.validation.title_max_incorrect'),
 
             'body.required' => trans('admin/pages/news.create.validation.body_is_required'),
 

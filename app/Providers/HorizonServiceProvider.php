@@ -13,10 +13,8 @@ class HorizonServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Horizon::auth(function ($request) 
-        {
-            if (!$request->user()->isRoot()) 
-            {
+        Horizon::auth(function ($request) {
+            if (! $request->user()->isRoot()) {
                 throw new UnauthorizedHttpException('Unauthorized');
             }
 
@@ -27,7 +25,7 @@ class HorizonServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register() 
+    public function register()
     {
     }
 }

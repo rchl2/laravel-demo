@@ -14,7 +14,6 @@ final class AccountUnblockedNotification extends Notification implements ShouldQ
 
     public $user;
 
-
     public function __construct(User $user)
     {
         $this->user = $user;

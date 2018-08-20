@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
 use Alert;
 use App\Models\User;
 use App\Queries\UserQueries;
 use Illuminate\Http\Request;
-use App\Services\AccountService;
 use App\Http\Controllers\Controller;
 use App\Jobs\Admin\Account\UpdateUser;
 use App\Jobs\Admin\Account\BlockAccount;
@@ -59,6 +57,7 @@ class AccountController extends Controller
         $this->dispatchNow(UpdateUser::UpdateAccountRequest($user, $request));
 
         Alert::success(trans('admin/partials/alerts.informations.user_successfully_edited'))->autoclose(2000);
+
         return redirect()->route('users.show', [$user]);
     }
 
@@ -67,9 +66,9 @@ class AccountController extends Controller
      */
     public function blockUserForm(User $user)
     {
-        if ($user->isAdmin() || $user->isBlocked())
-        {
+        if ($user->isAdmin() || $user->isBlocked()) {
             Alert::error(trans('admin/partials/alerts.errors.cant_ban_admin_or_user_is_already_blocked'))->autoclose(2000);
+
             return back();
         }
 
@@ -84,6 +83,7 @@ class AccountController extends Controller
         $this->dispatchNow(BlockAccount::BlockAccountRequest($user, $request));
 
         Alert::success(trans('admin/partials/alerts.informations.user_successfully_blocked'))->autoclose(2000);
+
         return redirect()->route('users.show', [$user]);
     }
 
@@ -92,15 +92,16 @@ class AccountController extends Controller
      */
     public function unblockUser(Request $request, User $user)
     {
-        if (!$user->isBlocked()) 
-        {
+        if (! $user->isBlocked()) {
             Alert::error(trans('admin/partials/alerts.errors.cant_unban_user'))->autoclose(2000);
+
             return back();
         }
 
         $this->dispatchNow(new UnblockAccount($user));
 
         Alert::success(trans('admin/partials/alerts.informations.user_successfully_unblocked'))->autoclose(2000);
+
         return redirect()->route('users.show', [$user]);
     }
 }

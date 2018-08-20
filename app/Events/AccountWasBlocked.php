@@ -10,7 +10,7 @@ final class AccountWasBlocked
     use SerializesModels;
 
     public $blockedUser;
-    
+
     public function __construct(User $blockedUser)
     {
         $this->blockedUser = $blockedUser;

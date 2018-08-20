@@ -14,9 +14,9 @@ class News extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        'title', 
-        'author', 
-        'image', 
+        'title',
+        'author',
+        'image',
         'body',
     ];
 
@@ -24,7 +24,7 @@ class News extends Model
      * The attributes are dates.
      */
     protected $dates = [
-        'created_at', 
+        'created_at',
         'updated_at',
     ];
 

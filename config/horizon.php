@@ -102,11 +102,11 @@ return [
 
             'supervisor-high-priority' => [
                 'connection' => 'redis-high-priority',
-                'queue' => 'high-priority',
-                'balance' => 'simple',
-                'processes' => 1,
-                'tries' => 3,
-                'timeout' => 90,
+                'queue'      => 'high-priority',
+                'balance'    => 'simple',
+                'processes'  => 1,
+                'tries'      => 3,
+                'timeout'    => 90,
             ],
         ],
     ],

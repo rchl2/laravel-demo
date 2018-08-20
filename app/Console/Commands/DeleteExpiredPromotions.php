@@ -38,10 +38,8 @@ class DeleteExpiredPromotions extends Command
         $promotions = ShopPromotionsQueries::getExpired();
 
         // Count items in collection
-        if ($promotions->count())
-        {
-            $promotions->each(function ($promotion) 
-            {
+        if ($promotions->count()) {
+            $promotions->each(function ($promotion) {
                 $this->dispatchNow(new DeletePromotion($promotion));
             });
         }

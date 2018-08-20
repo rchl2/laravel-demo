@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /**
+        /*
          * Remove expired promotions.
          * This executes only when there is more than zero expired promotions.
          */
@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
             })
             ->appendOutputTo(storage_path('logs/command_expired_promotions.log'));
 
-        /**
+        /*
          * Remove expired users bans.
          * This executes only when there is more than zero users with expired bans.
          */
@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
             })
             ->appendOutputTo(storage_path('logs/command_expired_bans.log'));
 
-        /**
+        /*
          * Horizon snapshots.
          */
         $schedule->command('horizon:snapshot')

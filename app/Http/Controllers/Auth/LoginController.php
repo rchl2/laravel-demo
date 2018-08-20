@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Session;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Queries\UserQueries;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -125,7 +125,7 @@ class LoginController extends Controller
         // Push new session.
         Auth::user()->session_id = Session::getId();
         Auth::user()->save();
-        
+
         // Return to desired loaction
         return redirect()->intended($this->redirectPath());
     }

@@ -5,7 +5,6 @@ namespace App\Jobs\Admin\News;
 use Auth;
 use Cache;
 use App\Models\News;
-use App\Services\NewsService;
 use App\Http\Requests\Admin\News\CreateNewsRequest;
 
 final class CreateNews
@@ -41,7 +40,7 @@ final class CreateNews
             'title'  => $this->title,
             'body'   => $this->body,
             'image'  => $image,
-            'author' => Auth::user()->id]);
+            'author' => Auth::user()->id, ]);
 
         $news->save();
 

@@ -34,6 +34,7 @@ final class UpdateUser
     public function handle(): User
     {
         $this->user->update($this->data);
+
         return $this->user;
     }
 }

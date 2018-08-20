@@ -3,7 +3,6 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Queries\GuildQueries;
 use App\Queries\PlayerQueries;
 
 class SidebarsComposer

@@ -6,7 +6,6 @@ use Hash;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\AccountService;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
@@ -98,7 +97,7 @@ class RegisterController extends Controller
             'pin'                    => $this->accountService->generatePinCode(),
             'social_id'              => $data['socialid'],
             'last_successful_login'  => $date,
-            'verification_token'     => bin2hex(random_bytes(24))]);
+            'verification_token'     => bin2hex(random_bytes(24)), ]);
 
         // Return user
         return $user;

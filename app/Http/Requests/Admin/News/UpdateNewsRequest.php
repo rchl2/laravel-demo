@@ -43,12 +43,12 @@ class UpdateNewsRequest extends FormRequest
     {
         return [
             'title.required' => trans('admin/pages/news.update.validation.title_is_required'),
-            'title.string' => trans('admin/pages/news.update.validation.title_string_incorrect'),
-            'title.min' => trans('admin/pages/news.update.validation.title_min_incorrect'),
-            'title.max' => trans('admin/pages/news.update.validation.title_max_incorrect'),
+            'title.string'   => trans('admin/pages/news.update.validation.title_string_incorrect'),
+            'title.min'      => trans('admin/pages/news.update.validation.title_min_incorrect'),
+            'title.max'      => trans('admin/pages/news.update.validation.title_max_incorrect'),
 
             'body.required' => trans('admin/pages/news.update.validation.body_is_required'),
-            'body.string' => trans('admin/pages/news.update.validation.body_string_incorrect'),
+            'body.string'   => trans('admin/pages/news.update.validation.body_string_incorrect'),
         ];
     }
 

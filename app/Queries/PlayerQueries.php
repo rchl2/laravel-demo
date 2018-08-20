@@ -5,7 +5,6 @@ namespace App\Queries;
 use App\Models\Player;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Contracts\Pagination\Paginator;
 
 final class PlayerQueries
 {
@@ -14,8 +13,7 @@ final class PlayerQueries
      */
     public static function getForSidebarRanklist(int $count): Collection
     {
-        $players = Cache::remember('players_ranking_sidebar', '8', function () use ($count) 
-        {
+        $players = Cache::remember('players_ranking_sidebar', '8', function () use ($count) {
             // Skip prefixes on players
             $whereData = [
                 ['name', 'NOT LIKE', '[TEAM]%'],

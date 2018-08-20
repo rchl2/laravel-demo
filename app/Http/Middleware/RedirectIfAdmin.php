@@ -9,8 +9,7 @@ class RedirectIfAdmin
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->isAdmin()) 
-        {
+        if (Auth::user()->isAdmin()) {
             return $next($request);
         }
 

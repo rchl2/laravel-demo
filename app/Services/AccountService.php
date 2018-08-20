@@ -15,7 +15,7 @@ class AccountService
         return Hash::check($hash, $password) ? true : false;
     }
 
-     /**
+    /**
      * Check if new_email_token is correct. Compare two strings.
      */
     public function isNewEmailTokenCorrect(User $user, string $token)

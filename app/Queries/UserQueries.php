@@ -12,11 +12,11 @@ final class UserQueries
     // Status of account
     const BLOCK = 'BLOCK';
     const INACTIVE = 'INACTIVE';
-    
+
     /**
      * Get latest users, paginate results.
      */
-    public static function latestPaginated(int $perPage = 15) : Paginator
+    public static function latestPaginated(int $perPage = 15): Paginator
     {
         return User::latest()
             ->simplePaginate($perPage);
@@ -26,21 +26,21 @@ final class UserQueries
      * Search for user ("accounts") with given value.
      * Paginate results as return and appends to search.
      */
-    public static function searchAccounts(string $value, int $per_page = 15) : Paginator
+    public static function searchAccounts(string $value, int $per_page = 15): Paginator
     {
         return User::where(function ($query) use ($value) {
-                $query->where('login', 'LIKE', '%'.$value.'%');
-                $query->orWhere('email', 'LIKE', '%'.$value.'%');
-                $query->orWhere('web_ip', 'LIKE', '%'.$value.'%');
-            })
+            $query->where('login', 'LIKE', '%'.$value.'%');
+            $query->orWhere('email', 'LIKE', '%'.$value.'%');
+            $query->orWhere('web_ip', 'LIKE', '%'.$value.'%');
+        })
             ->simplePaginate($per_page)
             ->appends(['search' => $value]);
     }
-    
+
     /**
      * Find users with this IP address.
      */
-    public static function getWithIpAddress(string $ip) : Collection
+    public static function getWithIpAddress(string $ip): Collection
     {
         return User::where('web_ip', $ip)
             ->select(['id', 'login', 'last_successful_login', 'web_admin', 'cash'])
@@ -64,9 +64,9 @@ final class UserQueries
     public static function getWithExpiredBans(): Collection
     {
         return User::where(function ($query) {
-                $query->where('status', '=', self::BLOCK);
-                $query->where('availDt', '<=', Carbon::now('Europe/Warsaw')->toDateTimeString());
-            })
+            $query->where('status', '=', self::BLOCK);
+            $query->where('availDt', '<=', Carbon::now('Europe/Warsaw')->toDateTimeString());
+        })
             ->select(['id', 'login', 'email', 'status', 'blocked_by', 'blocked_desc', 'availDt', 'web_ip'])
             ->get();
     }
@@ -77,9 +77,9 @@ final class UserQueries
     public static function countWithExpiredBans(): int
     {
         return User::where(function ($query) {
-                $query->where('status', '=', self::BLOCK);
-                $query->where('availDt', '<=', Carbon::now()->toDateTimeString());
-            })
+            $query->where('status', '=', self::BLOCK);
+            $query->where('availDt', '<=', Carbon::now()->toDateTimeString());
+        })
             ->count();
     }
 
@@ -109,9 +109,9 @@ final class UserQueries
     public static function findToVerifyByLogin(string $login): ?User
     {
         return User::where(function ($query) use ($login) {
-                $query->where('login', $login);
-                $query->where('status', self::INACTIVE);
-            })
+            $query->where('login', $login);
+            $query->where('status', self::INACTIVE);
+        })
             ->select(['id', 'login', 'status', 'email', 'pin', 'verification_token'])
             ->first();
     }
@@ -122,9 +122,9 @@ final class UserQueries
     public static function findToVerifyEmailChange(string $login): ?User
     {
         return User::where(function ($query) use ($login) {
-                $query->where('login', $login);
-                $query->whereNotNull('new_email_token');
-            })
+            $query->where('login', $login);
+            $query->whereNotNull('new_email_token');
+        })
             ->select(['id', 'login', 'new_email_token', 'new_email'])
             ->first();
     }

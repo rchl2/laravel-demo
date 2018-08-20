@@ -2,8 +2,8 @@
 
 namespace App\Relations;
 
-use App\Models\Reflinks;
 use App\Models\Safebox;
+use App\Models\Reflinks;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 trait UserRelations

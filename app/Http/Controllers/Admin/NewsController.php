@@ -38,6 +38,7 @@ class NewsController extends Controller
         $this->dispatchNow(CreateNews::CreateNewsRequest($request));
 
         Alert::success(trans('admin/partials/alerts.informations.news_successfully_created'))->autoclose(2000);
+
         return redirect()->route('news.index');
     }
 
@@ -65,6 +66,7 @@ class NewsController extends Controller
         $this->dispatchNow(UpdateNews::UpdateNewsRequest($news, $request));
 
         Alert::success(trans('admin/partials/alerts.informations.news_successfully_edited'))->autoclose(2000);
+
         return redirect()->route('news.show', [$news]);
     }
 
@@ -76,6 +78,7 @@ class NewsController extends Controller
         $this->dispatchNow(new DeleteNews($news));
 
         Alert::success(trans('admin/partials/alerts.informations.news_successfully_deleted'))->autoclose(2000);
+
         return redirect()->route('news.index');
     }
 }

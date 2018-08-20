@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Queries\UserQueries;
-use App\Services\AccountService;
 use App\Http\Controllers\Controller;
 use App\Jobs\Front\Account\ActivateAccount;
 
 class VerifyController extends Controller
 {
     private $accountService;
-    
-    public function __construct($accountService) 
+
+    public function __construct($accountService)
     {
         $this->accountService = $accountService;
     }
@@ -24,19 +23,16 @@ class VerifyController extends Controller
     {
         // Find user
         $user = UserQueries::findToVerifyByLogin($login);
-        if ($user)
-        {
+        if ($user) {
             // Compare tokens
             $token = $this->accountService->isVerificationTokenCorrect($user, $token);
-            
+
             // If token is correct, activate account and redirect user with message.
-            if($token)
-            {
+            if ($token) {
                 $this->dispatch(new ActivateAccount($user));
+
                 return redirect()->route('login')->with('message', trans('auth.account_verified'));
-            }
-            else
-            {
+            } else {
                 return redirect()->route('login')->with('message', trans('auth.incorrect_verification_token'));
             }
         }

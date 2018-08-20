@@ -134,7 +134,7 @@ final class User extends Authenticatable
         return $this->last_successful_login;
     }
 
-    public function session_id(): ?string 
+    public function session_id(): ?string
     {
         return $this->session_id;
     }
@@ -153,7 +153,7 @@ final class User extends Authenticatable
     {
         return $this->new_email_token;
     }
-    
+
     public function isAdmin(): bool
     {
         return self::ADMIN === $this->web_admin();
@@ -178,15 +178,14 @@ final class User extends Authenticatable
     {
         $this->notify(new AccountResetPassword($token));
     }
-    
+
     /**
-    * Overrides the method to ignore the remember token.
-    */
+     * Overrides the method to ignore the remember token.
+     */
     public function setAttribute($key, $value)
     {
         $isRememberTokenAttribute = $key == $this->getRememberTokenName();
-        if (!$isRememberTokenAttribute)
-        {
+        if (! $isRememberTokenAttribute) {
             parent::setAttribute($key, $value);
         }
     }

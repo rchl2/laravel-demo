@@ -38,10 +38,8 @@ class DeleteExpiredBans extends Command
         $users = UserQueries::getWithExpiredBans();
 
         // Count users in collection.
-        if ($users->count())
-        {
-            $users->each(function ($user) 
-            {
+        if ($users->count()) {
+            $users->each(function ($user) {
                 $this->dispatchNow(new UnblockAccount($user));
             });
         }

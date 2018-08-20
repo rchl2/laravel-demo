@@ -42,11 +42,11 @@ class UpdateEmailRequest extends FormRequest
     public function messages()
     {
         return [
-            'password.required' => trans('pages/account.change_email.validation.password_is_required'),
-            'new_email.required' => trans('pages/account.change_email.validation.new_email_required_incorrect'),
-            'new_email.email' => trans('pages/account.change_email.validation.new_email_email_incorrect'),
+            'password.required'   => trans('pages/account.change_email.validation.password_is_required'),
+            'new_email.required'  => trans('pages/account.change_email.validation.new_email_required_incorrect'),
+            'new_email.email'     => trans('pages/account.change_email.validation.new_email_email_incorrect'),
             'new_email.confirmed' => trans('pages/account.change_email.validation.new_email_confirmed_incorrect'),
-            'new_email.unique' => trans('pages/account.change_email.validation.new_email_unique_incorrect'),
+            'new_email.unique'    => trans('pages/account.change_email.validation.new_email_unique_incorrect'),
         ];
     }
 
