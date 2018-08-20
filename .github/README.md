@@ -1,4 +1,4 @@
-##  ✨ Laravel Orbit 5.4 "work demo" code
+## Laravel Orbit 5.4 "work demo" code
 ⚠️ **Don't try launch this**. It won't work. This is only couple selected parts of application code, let's name it - "demo", that i can show (rest of code is still under NDA).
 
 ##  Why?
